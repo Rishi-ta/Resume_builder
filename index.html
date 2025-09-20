@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="stle.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-panel">
+            <h1>Resume Builder</h1>
+            
+            <div class="form-section">
+                <h2>Template</h2>
+                <div class="template-selector">
+                    <div class="template-option active" data-template="modern">
+                        <strong>Modern Card</strong>
+                        <div style="font-size: 0.8rem; color: #666; margin-top: 5px;">Gradient header with cards</div>
+                    </div>
+                    <div class="template-option" data-template="classic">
+                        <strong>Classic Column</strong>
+                        <div style="font-size: 0.8rem; color: #666; margin-top: 5px;">Clean professional layout</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Personal Information</h2>
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" maxlength="50" required>
+                    <div class="error-message" id="fullNameError"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" required>
+                        <div class="error-message" id="emailError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone *</label>
+                        <input type="tel" id="phone" required>
+                        <div class="error-message" id="phoneError"></div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="linkedin">LinkedIn</label>
+                        <input type="url" id="linkedin" placeholder="https://linkedin.com/in/username">
+                    </div>
+                    <div class="form-group">
+                        <label for="github">GitHub</label>
+                        <input type="url" id="github" placeholder="https://github.com/username">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="summary">Professional Summary</label>
+                    <textarea id="summary" placeholder="Brief professional summary..." maxlength="500"></textarea>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Experience</h2>
+                <div id="experienceContainer"></div>
+                <button type="button" class="btn" onclick="addExperience()">+ Add Experience</button>
+            </div>
+
+            <div class="form-section">
+                <h2>Education</h2>
+                <div id="educationContainer"></div>
+                <button type="button" class="btn" onclick="addEducation()">+ Add Education</button>
+            </div>
+
+            <div class="form-section">
+                <h2>Projects</h2>
+                <div id="projectsContainer"></div>
+                <button type="button" class="btn" onclick="addProject()">+ Add Project</button>
+            </div>
+
+            <div class="form-section">
+                <h2>Skills</h2>
+                <div id="skillsContainer"></div>
+                <button type="button" class="btn" onclick="addSkill()">+ Add Skill</button>
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button type="button" class="btn" onclick="generatePDF()">📄 Download PDF</button>
+                <button type="button" class="btn btn-secondary" onclick="clearForm()">🗑️ Clear All</button>
+            </div>
+        </div>
+
+        <div class="preview-panel">
+            <h1 style="margin-bottom: 20px;">Resume Preview</h1>
+            <div id="resumePreview" class="resume-preview resume-modern">
+                <div class="header">
+                    <h1 id="previewName">Your Name</h1>
+                    <div class="contact-info">
+                        <div class="contact-item" id="previewEmail">email@example.com</div>
+                        <div class="contact-item" id="previewPhone">+1 (555) 123-4567</div>
+                        <div class="contact-item" id="previewLinkedIn" style="display: none;"></div>
+                        <div class="contact-item" id="previewGitHub" style="display: none;"></div>
+                    </div>
+                </div>
+                
+                <div class="resume-section" id="summarySection" style="display: none;">
+                    <h2>Professional Summary</h2>
+                    <p id="previewSummary"></p>
+                </div>
+
+                <div class="resume-section" id="experienceSection" style="display: none;">
+                    <h2>Experience</h2>
+                    <div id="previewExperience"></div>
+                </div>
+
+                <div class="resume-section" id="educationSection" style="display: none;">
+                    <h2>Education</h2>
+                    <div id="previewEducation"></div>
+                </div>
+
+                <div class="resume-section" id="projectsSection" style="display: none;">
+                    <h2>Projects</h2>
+                    <div id="previewProjects"></div>
+                </div>
+
+                <div class="resume-section" id="skillsSection" style="display: none;">
+                    <h2>Skills</h2>
+                    <div id="previewSkills" class="skills-grid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="code.js"></script>
+</body>
+</html>
